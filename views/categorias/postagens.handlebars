@@ -1,0 +1,30 @@
+<h2>{{categoria.nome}}
+    ({{postagens.length}})
+    <a
+        class="btn btn-secondary btn-lg"
+        href="/categorias"
+        role="button"
+    >Voltar</a>
+</h2>
+
+{{#each postagens}}
+    <div class="bg-dark text-white p-5 rounded m-3">
+        <h1 class="display-4">{{titulo}}</h1>
+        <p class="lead">{{descricao}}</p>
+        <hr class="my-4" />
+        <small>Data de publicação:
+            {{dateFormat data "DD[ de ]MMMM[ de ]YYYY[, às ]HH:MM:SS"}}
+        </small><br />
+        <a
+            class="btn btn-primary btn-lg"
+            href="/postagem/{{slug}}"
+            role="button"
+        >Ver o post</a>
+    </div>
+{{else}}
+    <div class="bg-light p-5 rounded-lg m-3">
+        <h1 class="display-4">Nenhuma postagem encontrada</h1>
+        <p class="lead">Espere a publicação de novas postagens.</p>
+        <hr class="my-4" />
+    </div>
+{{/each}}

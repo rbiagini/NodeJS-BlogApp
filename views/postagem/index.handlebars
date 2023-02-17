@@ -1,0 +1,9 @@
+<h1 class="display-4">{{postagem.titulo}}</h1>
+<small>{{dateFormat
+        postagem.data
+        "DD[ de ]MMMM[ de ]YYYY[, às ]HH:MM:SS"
+    }}</small>
+<hr />
+<p><strong>{{postagem.descricao}}</strong></p>
+<p>{{postagem.conteudo}}</p>
+<a href="javascript:history.back()" class="btn btn-secondary">voltar</a>
