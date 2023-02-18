@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+console.log(process.env.NODE_ENV);
 if (process.env.NODE_ENV == "production") {
     const MONGODB_USERNAME = "biagini";
     const MONGODB_PASSWORD = "2fsuA6BL82gwX37N";
