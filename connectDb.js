@@ -1,19 +1,22 @@
 const mongoose = require("mongoose");
 
-console.log(process.env.NODE_ENV);
-if (process.env.NODE_ENV == "production") {
-    const MONGODB_USERNAME = "biagini";
-    const MONGODB_PASSWORD = "2fsuA6BL82gwX37N";
-    const connectString = `mongodb+srv://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@nodejs.xqcrckt.mongodb.net/?retryWrites=true&w=majority`;
-    //`mongodb+srv://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@cursonodejs.c9jmpph.mongodb.net/BlogApp?retryWrites=true&w=majority`;
-} else {
-    const MONGODB_USERNAME = "biagini";
-    const MONGODB_PASSWORD = "9EpmJbtque11RBjt";
-    const connectString = `mongodb+srv://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@cursonodejs.c9jmpph.mongodb.net/BlogApp?retryWrites=true&w=majority`;
-}
-
 mongoose.set("strictQuery", false);
 const connectToDatabase = async () => {
+    console.log(process.env.NODE_ENV);
+    if (process.env.NODE_ENV == "production") {
+        var MONGODB_USERNAME = "biagini";
+        var MONGODB_PASSWORD = "2fsuA6BL82gwX37N";
+        var MONGODB_SERVER = "nodejs.xqcrckt.mongodb.net/";
+        console.log("producao " + MONGODB_USERNAME);
+    } else {
+        var MONGODB_USERNAME = "biagini";
+        var MONGODB_PASSWORD = "9EpmJbtque11RBjt";
+        var MONGODB_SERVER = "cursonodejs.c9jmpph.mongodb.net/BlogApp";
+        console.log(process.env.NODE_ENV + " " + MONGODB_USERNAME);
+    }
+
+    const connectString = `mongodb+srv://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@${MONGODB_SERVER}?retryWrites=true&w=majority`;
+
     //conexão original
     await mongoose.connect(connectString, (err) => {
         if (err) return console.log("Ocorreu um erro de conexão\n\n", err);
