@@ -85,6 +85,9 @@ const md = function (req, res, next) {
 };
 app.use(md);
 
+app.get("/teste", (req, res) => {
+    res.send("Está rodando");
+});
 //Rotas
 app.get("/", (req, res) => {
     console.log("inicio do index");
