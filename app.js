@@ -21,20 +21,30 @@ require("./config/auth")(passport);
 
 connectToDatabase();
 
-const cyclic_option = {
-    table: {
-        name: process.env.CYCLIC_DB,
-    },
-};
+if (process.env.NODE_ENV == "production") {
+    const cyclic_option = {
+        table: {
+            name: process.env.CYCLIC_DB,
+        },
+    };
 
-app.use(
-    session({
-        store: new CyclicSessionStore(cyclic_option),
-        secret: "cursodeNode",
-        resave: true,
-        saveUninitialized: true,
-    })
-);
+    app.use(
+        session({
+            store: new CyclicSessionStore(cyclic_option),
+            secret: "cursodeNode",
+            resave: true,
+            saveUninitialized: true,
+        })
+    );
+} else {
+    app.use(
+        session({
+            secret: "cursodeNode",
+            resave: true,
+            saveUninitialized: true,
+        })
+    );
+}
 
 // tem que ser depois da declaração da sessão e antes do flash
 app.use(passport.initialize());
@@ -82,7 +92,10 @@ app.get("/", (req, res) => {
         .sort({ data: "desc" })
         .then((postagens) => {
             req.flash("success_msg", "Erro ao carregar os posts");
-            res.render("index", { postagens: postagens });
+            res.render("index", {
+                postagens: postagens,
+                node_env: process.env.NODE_ENV,
+            });
         })
         .catch((error) => {
             req.flash("error_msg", "Erro ao carregar os posts");
@@ -156,8 +169,6 @@ const usuario = require("./routes/usuario.router");
 //const { route } = require("./routes/usuario");
 
 const { text } = require("body-parser");
-//const { CyclicSessionStore } = require("@cyclic.sh/session-store");
-//const passport = require("passport");
 
 app.use("/admin", admin);
 app.use("/usuarios", usuario);
