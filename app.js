@@ -6,7 +6,7 @@ const app = express();
 const connectToDatabase = require("./connectDb");
 
 const session = require("express-session");
-const { CyclicSessionStore } = require("@cyclic.sh/session-store");
+//const { CyclicSessionStore } = require("@cyclic.sh/session-store");
 const flash = require("connect-flash");
 
 const { default: mongoose } = require("mongoose");
