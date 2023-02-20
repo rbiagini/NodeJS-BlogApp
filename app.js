@@ -156,7 +156,7 @@ const usuario = require("./routes/usuario.router");
 //const { route } = require("./routes/usuario");
 
 const { text } = require("body-parser");
-const { CyclicSessionStore } = require("@cyclic.sh/session-store");
+//const { CyclicSessionStore } = require("@cyclic.sh/session-store");
 //const passport = require("passport");
 
 app.use("/admin", admin);
