@@ -93,11 +93,12 @@ app.get("/teste", (req, res) => {
     Postagem.find()
         .then((postagens) => {
             console.log("Postagens: " + postagens.length);
+            res.send(postagens);
         })
         .catch((err) => {
             console.log("Erro encontrado 001");
+            res.send("ERRO: " + err);
         });
-    res.send("Está rodando");
 });
 //Rotas
 app.get("/", (req, res) => {
