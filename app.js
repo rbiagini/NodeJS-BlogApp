@@ -31,7 +31,7 @@ if (1 == 0 || process.env.NODE_ENV == "production") {
 
     app.use(
         session({
-            store: new CyclicSessionStore(cyclic_option),
+            //store: new CyclicSessionStore(cyclic_option),
             secret: "cursodeNode",
             resave: true,
             saveUninitialized: true,
