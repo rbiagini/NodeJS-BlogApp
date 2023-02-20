@@ -6,6 +6,7 @@ const app = express();
 const connectToDatabase = require("./connectDb");
 
 const session = require("express-session");
+const { CyclicSessionStore } = require("@cyclic.sh/session-store");
 const flash = require("connect-flash");
 
 const { default: mongoose } = require("mongoose");
@@ -20,8 +21,15 @@ require("./config/auth")(passport);
 
 connectToDatabase();
 
+const cyclic_option = {
+    table: {
+        name: process.env.CYCLIC_DB,
+    },
+};
+
 app.use(
     session({
+        store: new CyclicSessionStore(cyclic_option),
         secret: "cursodeNode",
         resave: true,
         saveUninitialized: true,
@@ -73,6 +81,7 @@ app.get("/", (req, res) => {
         .populate("categoria")
         .sort({ data: "desc" })
         .then((postagens) => {
+            req.flash("success_msg", "Erro ao carregar os posts");
             res.render("index", { postagens: postagens });
         })
         .catch((error) => {
@@ -147,6 +156,7 @@ const usuario = require("./routes/usuario.router");
 //const { route } = require("./routes/usuario");
 
 const { text } = require("body-parser");
+const { CyclicSessionStore } = require("@cyclic.sh/session-store");
 //const passport = require("passport");
 
 app.use("/admin", admin);
