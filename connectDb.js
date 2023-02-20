@@ -3,10 +3,10 @@ const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
 const connectToDatabase = async () => {
     console.log(process.env.NODE_ENV);
-    if (1 == 1 || process.env.NODE_ENV == "production") {
+    if (process.env.NODE_ENV == "production") {
         var MONGODB_USERNAME = "biagini";
         var MONGODB_PASSWORD = "2fsuA6BL82gwX37N";
-        var MONGODB_SERVER = "nodejs.xqcrckt.mongodb.net/";
+        var MONGODB_SERVER = "nodejs.xqcrckt.mongodb.net/BlogApp";
         console.log("producao " + MONGODB_USERNAME);
     } else {
         var MONGODB_USERNAME = "biagini";

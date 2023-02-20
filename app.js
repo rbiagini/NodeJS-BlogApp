@@ -27,6 +27,7 @@ if (process.env.NODE_ENV == "production") {
             name: process.env.CYCLIC_DB,
         },
     };
+    console.log("CYCLIC_DB: " + process.env.CYCLIC_DB);
 
     app.use(
         session({
