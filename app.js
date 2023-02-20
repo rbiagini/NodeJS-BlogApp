@@ -21,7 +21,7 @@ require("./config/auth")(passport);
 
 connectToDatabase();
 
-if (1 == 1 || process.env.NODE_ENV == "production") {
+if (1 == 0 || process.env.NODE_ENV == "production") {
     const cyclic_option = {
         table: {
             name: process.env.CYCLIC_DB,
