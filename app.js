@@ -91,7 +91,8 @@ app.get("/", (req, res) => {
         .populate("categoria")
         .sort({ data: "desc" })
         .then((postagens) => {
-            req.flash("success_msg", "Erro ao carregar os posts");
+            //req.flash("success_msg", "Erro ao carregar os posts");
+            console.log("Renderizando a /index");
             res.render("index", {
                 postagens: postagens,
                 node_env: process.env.NODE_ENV,

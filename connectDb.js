@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
 const connectToDatabase = async () => {
     console.log(process.env.NODE_ENV);
-    if (process.env.NODE_ENV == "production") {
+    if (1 == 1 || process.env.NODE_ENV == "production") {
         var MONGODB_USERNAME = "biagini";
         var MONGODB_PASSWORD = "2fsuA6BL82gwX37N";
         var MONGODB_SERVER = "nodejs.xqcrckt.mongodb.net/";
