@@ -89,6 +89,7 @@ const md = function (req, res, next) {
 app.use(md);
 
 app.get("/teste", (req, res) => {
+    console.log("começou o teste");
     Postagem.find()
         .then((postagens) => {
             console.log("Postagens: " + postagens.length);
