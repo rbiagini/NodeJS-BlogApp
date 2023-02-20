@@ -103,6 +103,7 @@ app.get("/", (req, res) => {
             });
         })
         .catch((error) => {
+            console.log("Erro na /index");
             req.flash("error_msg", "Erro ao carregar os posts");
             res.redirect("/404");
         });
