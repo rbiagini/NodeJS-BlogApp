@@ -87,6 +87,13 @@ const md = function (req, res, next) {
 app.use(md);
 
 app.get("/teste", (req, res) => {
+    Postagem.find()
+        .then((postagens) => {
+            console.log("Postagens: " + postagens.length);
+        })
+        .catch((err) => {
+            console.log("Erro encontrado 001");
+        });
     res.send("Está rodando");
 });
 //Rotas
