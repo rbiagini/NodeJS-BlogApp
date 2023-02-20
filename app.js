@@ -87,6 +87,7 @@ app.use(md);
 
 //Rotas
 app.get("/", (req, res) => {
+    console.log("inicio do index");
     Postagem.find()
         .populate("categoria")
         .sort({ data: "desc" })
