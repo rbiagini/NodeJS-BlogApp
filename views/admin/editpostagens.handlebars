@@ -13,6 +13,7 @@
             <input
                 type="text"
                 name="titulo"
+                id="titulo"
                 class="form-control"
                 value="{{postagem.titulo}}"
             />
@@ -20,6 +21,7 @@
             <input
                 type="text"
                 name="slug"
+                id="slug"
                 class="form-control"
                 value="{{postagem.slug}}"
             />
@@ -51,3 +53,8 @@
         </form>
     </div>
 </div>
+
+<script lang="javascript" src="/js/auxFunctions.js"></script>
+<script lang="javascript">
+    setSlug("titulo", "slug");
+</script>
