@@ -6,7 +6,7 @@ const app = express();
 const connectToDatabase = require("./connectDb");
 
 const session = require("express-session");
-//const { CyclicSessionStore } = require("@cyclic.sh/session-store");
+const { CyclicSessionStore } = require("@cyclic.sh/session-store");
 const flash = require("connect-flash");
 
 const { default: mongoose } = require("mongoose");
@@ -21,8 +21,7 @@ require("./config/auth")(passport);
 
 connectToDatabase();
 
-if (1 == 0 && process.env.NODE_ENV == "production") {
-    /*
+if (process.env.NODE_ENV == "production") {
     const cyclic_option = {
         table: {
             name: process.env.CYCLIC_DB,
@@ -32,13 +31,12 @@ if (1 == 0 && process.env.NODE_ENV == "production") {
 
     app.use(
         session({
-            //store: new CyclicSessionStore(cyclic_option),
+            store: new CyclicSessionStore(cyclic_option),
             secret: "cursodeNode",
             resave: true,
             saveUninitialized: true,
         })
     );
-    */
 } else {
     app.use(
         session({
